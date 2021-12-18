@@ -65,3 +65,5 @@ export function drawSegment([ay, ax], [by, bx], color, scale, ctx) {
     ctx.strokeStyle = color;
     ctx.stroke();
 }
+
+

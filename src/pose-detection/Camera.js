@@ -16,6 +16,7 @@ import * as poseDetection from '@tensorflow-models/pose-detection';
 import * as tf from '@tensorflow/tfjs-core';
 import '@tensorflow/tfjs-backend-webgl';
 import Size from "../Size";
+import Sizecopy from "../Sizecopy";
 
 function Camera (){
     const webcamRef = useRef(null);
@@ -63,10 +64,13 @@ function Camera (){
             const poses = await detector.estimatePoses(video, estimationConfig, timestamp)
             
             //console.log(poses["0"]["keypoints"]);
-      
-            drawCanvas(poses, video, videoWidth, videoHeight, canvasRef);
-            Size(poses);
-            
+            try {
+              drawCanvas(poses, video, videoWidth, videoHeight, canvasRef);
+              // Size(poses);
+              Sizecopy(poses, "11", "12")
+            } catch (e) {
+              console.error(e.message);
+            }            
           }
     }
 
