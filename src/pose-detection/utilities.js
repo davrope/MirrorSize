@@ -11,19 +11,26 @@ export function drawSkeleton(keypoints, minConfidence, ctx, scale = 1) {
     const adjacentKeyPoints =
         posenet.getAdjacentKeyPoints(keypoints, minConfidence);
   
-    function toTuple({y, x}) {
-      return [y, x];
-    }
-
-    
+    // function toTuple({y, x}) {
+    //   return [y, x];
+      
+    // }
   
     adjacentKeyPoints.forEach((keypoints) => {
       drawSegment(
-          toTuple(keypoints[0]["y"], keypoints[0]["x"]), toTuple(keypoints[1]["y"], keypoints[1]["x"]), COLOR,
+          keypoints[0]["x"], keypoints[0]["y"], keypoints[1]["x"], keypoints[1]["y"], COLOR,
           scale =1, ctx);
     });
 
-    console.log(adjacentKeyPoints)
+    // adjacentKeyPoints.forEach((keypoints) => {
+        
+    //     drawSegment(
+    //         keypoints[0].position,keypoints[1].position, COLOR,
+    //         scale =1, ctx);
+    //   });
+  
+
+    console.log(typeof(keypoints[0]["y"]))
 }
   
   /**
@@ -42,6 +49,9 @@ export function drawKeypoints(keypoints, minConfidence, ctx, scale = 1) {
         const x = keypoint.x;
         const y = keypoint.y;
 
+        // Agregado reciéntemente:
+        // const {y, x}  = keypoint.position
+
         drawPoint(ctx, y * scale, x * scale, 3, COLOR);
     }
 }
@@ -57,7 +67,16 @@ export function drawPoint(ctx, y, x, r, color) {
   /**
    * Draws a line on a canvas, i.e. a joint
    */
-export function drawSegment([ay, ax], [by, bx], color, scale, ctx) {
+// export function drawSegment([ay, ax], [by, bx], color, scale, ctx) {
+//     ctx.beginPath();
+//     ctx.moveTo(ax * scale, ay * scale);
+//     ctx.lineTo(bx * scale, by * scale);
+//     ctx.lineWidth = LINE_WIDTH;
+//     ctx.strokeStyle = color;
+//     ctx.stroke();
+// }
+
+export function drawSegment(ax, ay, bx, by, color, scale, ctx) {
     ctx.beginPath();
     ctx.moveTo(ax * scale, ay * scale);
     ctx.lineTo(bx * scale, by * scale);
