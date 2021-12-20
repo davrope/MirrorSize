@@ -1,6 +1,6 @@
 import {sqrt} from 'mathjs'
 
-function Size(poses) {
+export default function Size(poses, pointIndex, adjacentPointIndex) {
 
     const substract = (first, second) =>
         first.reduce((acc, curr, i) => {
@@ -12,18 +12,16 @@ function Size(poses) {
 
 
     const keypoints = poses["0"]["keypoints"];
-    // console.log(keypoints);
 
-    const leftShoulder = [keypoints["11"]["y"],keypoints["11"]["x"] ]
-    const rightShoulder = [keypoints["12"]["y"], keypoints["12"]["x"]]
+    const point = [keypoints[pointIndex]["y"],keypoints[pointIndex]["x"] ]
+    const adjacentPoint = [keypoints[adjacentPointIndex]["y"], keypoints[adjacentPointIndex]["x"]]
     
-    const substraction = substract(leftShoulder, rightShoulder)
+    const substraction = substract(point, adjacentPoint)
     const myX = substraction[1];
     const myY = substraction[0]
-    const shouldersDistance = sqrt(myX^2+myY^2);
+    const elementDistance = sqrt(myX^2+myY^2);
 
     
-    console.log(shouldersDistance);
+    console.log(elementDistance);
 }
 
-export default Size;
