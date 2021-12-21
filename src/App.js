@@ -1,5 +1,7 @@
 import React from 'react';
 import Camera from './pose-detection/Camera';
+import './App.css';
+
 
 class App extends React.Component{
     // componentDidMount({
@@ -8,7 +10,7 @@ class App extends React.Component{
 
     render(){
         return(
-            <div>
+            <div >
                 <Camera/>
             </div>
 

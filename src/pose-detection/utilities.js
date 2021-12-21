@@ -2,7 +2,6 @@ import * as posenet from '@tensorflow-models/posenet';
 import * as tf from '@tensorflow/tfjs-core';
 
 const COLOR = 'aqua';
-const BOUNDING_BOX_COLOR = 'red';
 const LINE_WIDTH = 2;
 
 
@@ -22,6 +21,7 @@ export function drawSkeleton(keypoints, minConfidence, ctx, scale = 1) {
           scale =1, ctx);
     });
 
+
     // adjacentKeyPoints.forEach((keypoints) => {
         
     //     drawSegment(
@@ -30,7 +30,7 @@ export function drawSkeleton(keypoints, minConfidence, ctx, scale = 1) {
     //   });
   
 
-    console.log(typeof(keypoints[0]["y"]))
+    //console.log(typeof(keypoints[0]["y"]))
 }
   
   /**

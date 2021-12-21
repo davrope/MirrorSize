@@ -8,6 +8,7 @@ import reduxThunk from 'redux-thunk';
 import App from './App';
 import reducers from './reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import './App.css';
 
 
 
