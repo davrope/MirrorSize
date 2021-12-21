@@ -11,10 +11,12 @@ export default function Measurement(poses) {
     let mysize = []
 
     for(; i<len; i++){
-        var currentSize = Size(poses, blazeposearray[i][0], blazeposearray[i][0])
+        var currentSize = Size(poses, blazeposearray[i][0], blazeposearray[i][1])
         mysize.push(currentSize);
 
         console.log(mysize)
+
+        return mysize
     }
 
 }
