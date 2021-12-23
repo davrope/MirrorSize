@@ -1,5 +1,6 @@
 
 import Size from './Size';
+import realDistance from './RealDistance';
 
 
 export default function Measurement(poses) {
@@ -14,9 +15,15 @@ export default function Measurement(poses) {
         var currentSize = Size(poses, blazeposearray[i][0], blazeposearray[i][1])
         mysize.push(currentSize);
 
-        console.log(mysize)
+        // console.log(mysize)
 
-        return mysize
     }
+
+    const height = 178;
+
+    // const poses_height = Size(poses, "20", "19")
+    const poses_height = realDistance(poses)
+
+    // console.log(poses_height);
 
 }

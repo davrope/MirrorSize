@@ -21,6 +21,7 @@ export default function Size(poses, pointIndex, adjacentPointIndex) {
     const myY = substraction[0]
     const elementDistance = sqrt(myX^2+myY^2);
 
+        // typeof elementDistance = number
     return elementDistance
 }
 
