@@ -24,6 +24,6 @@ export default function Measurement(poses) {
     // const poses_height = Size(poses, "20", "19")
     const poses_height = realDistance(poses)
 
-    // console.log(poses_height);
+    // console.log(typeof(poses_height));
 
 }
