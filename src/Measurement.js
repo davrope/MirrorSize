@@ -1,23 +1,28 @@
 
 import Size from './Size';
 import comparingDistance from './comparingDistance';
+import { blazeposearray, iterateSize } from './pose-detection/utilities';
 
 
 export default function Measurement(poses) {
 
-    let blazeposearray = [["11", "12"],["24", "23"],["12", "24"],["11", "23"],["14", "16"],["13", "15"]]
+    // let blazeposearray = [["11", "12"],["24", "23"],["12", "24"],["11", "23"],["14", "16"],["13", "15"]]
 
-    let i = 0;
-    let len = blazeposearray.length;
-    let mysize = []
+    // let i = 0;
+    // let len = blazeposearray.length;
+    // let mysize = []
 
-    for(; i<len; i++){
-        var currentSize = Size(poses, blazeposearray[i][0], blazeposearray[i][1])
-        mysize.push(currentSize);
+    let mysize = iterateSize(blazeposearray, poses);
 
-        // console.log(mysize)
+    // console.log(mysize)
 
-    }
+    // for(; i<len; i++){
+    //     var currentSize = Size(poses, blazeposearray[i][0], blazeposearray[i][1])
+    //     mysize.push(currentSize);
+
+    //     // console.log(mysize)
+
+    // }
 
     const height = 178;
 

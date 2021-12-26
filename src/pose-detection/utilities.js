@@ -1,4 +1,5 @@
 import * as posenet from '@tensorflow-models/posenet';
+import Size from '../Size';
 import * as tf from '@tensorflow/tfjs-core';
 
 const COLOR = 'aqua';
@@ -86,3 +87,26 @@ export function drawSegment(ax, ay, bx, by, color, scale, ctx) {
 }
 
 
+export const blazeposearray = [["11", "12"],["24", "23"],["12", "24"],["11", "23"],["14", "16"],["13", "15"]]
+
+export const arm_span_arr = [["12", "11"], ["14", "12"], ["14", "16"], ["16", "20"], ["11", "13"], ["13", "15"], ["15", "19"]]
+
+
+
+
+
+
+export function iterateSize(arr, poses) {
+
+    var result_arr = []
+    for(let i =0, len = arr.length; i<len; i++){
+        var currentSize = Size(poses, arr[i][0], arr[i][1])
+        
+        if (typeof(currentSize)==='number'){
+            result_arr.push(currentSize);
+        }
+        // console.log(result_arr)
+        
+    } 
+    return result_arr
+}

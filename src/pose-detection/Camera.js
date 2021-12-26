@@ -10,7 +10,7 @@
 
 // Import dependencies
 import React, { useRef, useState, useEffect } from "react";
-import { drawKeypoints, drawSkeleton } from "./utilities";
+import { blazeposearray, drawKeypoints, drawSkeleton } from "./utilities";
 import Webcam from "react-webcam";
 import * as poseDetection from '@tensorflow-models/pose-detection';
 import * as tf from '@tensorflow/tfjs-core';
