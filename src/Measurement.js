@@ -1,6 +1,6 @@
 
 import Size from './Size';
-import realDistance from './RealDistance';
+import comparingDistance from './comparingDistance';
 
 
 export default function Measurement(poses) {
@@ -22,7 +22,7 @@ export default function Measurement(poses) {
     const height = 178;
 
     // const poses_height = Size(poses, "20", "19")
-    const poses_height = realDistance(poses)
+    const poses_height = comparingDistance(poses)
 
     // console.log(typeof(poses_height));
 
