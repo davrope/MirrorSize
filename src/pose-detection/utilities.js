@@ -92,7 +92,8 @@ export const blazeposearray = [["11", "12"],["24", "23"],["12", "24"],["11", "23
 export const arm_span_arr = [["12", "11"], ["14", "12"], ["14", "16"], ["16", "20"], ["11", "13"], ["13", "15"], ["15", "19"]]
 
 
-
+// blazeposearray = [shoulders, hips, rshouldertorhip, llshouldertolhip, relbowtorwrist, lelbowtolwrist] len = 6
+//arm_span_arr = [shoulders, rshouldertorelbow, relbowtorwrist, rwristtorfinger, lshouldertolelbow, lelbowtolwrist, lwristtolfinger] len = 7
 
 
 

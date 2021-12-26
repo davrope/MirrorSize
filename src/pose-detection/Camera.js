@@ -17,7 +17,7 @@ import * as tf from '@tensorflow/tfjs-core';
 import '@tensorflow/tfjs-backend-webgl';
 import Size from "../Size";
 import Sizecopy from "../Size";
-import Measurement from "../Measurement";
+import comparingDistance from "../comparingDistance";
 
 function Camera (){
     const webcamRef = useRef(null);
@@ -70,7 +70,7 @@ function Camera (){
               // Size(poses);
               //Size(poses, "11", "12")
 
-              Measurement(poses)
+              comparingDistance(poses)
             } catch (e) {
               console.error(e.message);
             }            
