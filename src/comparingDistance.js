@@ -11,7 +11,7 @@ export default function comparingDistance(poses, height){
     var results_arr  = iterateSize(arm_span_arr, poses);
     var blaze_results_arr = iterateSize(blazeposearray, poses);
 
-    if(results_arr.length==5){  //ideally length = 7
+    if(results_arr.length==6){  //ideally length = 7
         const cv_distance = _.sum(iterateSize(arm_span_arr, poses));          
         size_factor = (height/cv_distance);
 

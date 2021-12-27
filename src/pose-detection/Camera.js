@@ -1,14 +1,3 @@
-// 1. Install dependencies DONE
-// 2. Import dependencies DONE
-// 3. Setup webcam and canvas DONE 
-// 4. Define references to those DONE
-// 5. Load blazepose 
-// 6. Detect function 
-// 7. Drawing utilities from tensorflow 
-// 8. Draw functions 
-
-
-// Import dependencies
 import React, { useRef, useState, useEffect } from "react";
 import { blazeposearray, drawKeypoints, drawSkeleton } from "./utilities";
 import Webcam from "react-webcam";
@@ -67,7 +56,7 @@ function Camera (){
             const timestamp = performance.now();
             const poses = await detector.estimatePoses(video, estimationConfig, timestamp)
             
-            //console.log(poses["0"]["keypoints"]);
+            // console.log(poses["0"]["keypoints"]);
             try {
               drawCanvas(poses, video, videoWidth, videoHeight, canvasRef);
               // Size(poses);
@@ -127,16 +116,23 @@ function Camera (){
           />
           <div
             style= {{
-             
+
               position:'relative',
               marginLeft:'auto',
               marginRight: "auto",
               justifyContent: 'flex-end',
               padding:500
-            }}
+            }}  
           >
-            <label>What's your height? (cm)</label>
-            <input type={"number"} onChange={e=>setHeight(e.target.value)}/>
+            <label>What's your height? (cm) </label>
+            <input 
+              type={"number"} 
+              onChange={e=>setHeight(e.target.value)}
+              style={{
+                borderStyle: 'groove',
+                borderColor: 'gray'
+              }} 
+            />
           </div>
 
           
