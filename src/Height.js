@@ -2,6 +2,7 @@ import React from 'react';
 
 class Height extends React.Component{
     constructor(props){
+        super(props);
         this.state = {value: ''};
 
         this.handleChange = this.handleChange.bind(this);
@@ -30,3 +31,5 @@ class Height extends React.Component{
         );
     }
 }
+
+export default Height;
