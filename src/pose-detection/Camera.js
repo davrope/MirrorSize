@@ -23,6 +23,9 @@ function Camera (){
     const webcamRef = useRef(null);
     const canvasRef = useRef(null);
 
+    const [height, setHeight] = useState(0);
+
+
     // Load BlazePose
 
     const myDetector= async ()=>{
@@ -70,7 +73,7 @@ function Camera (){
               // Size(poses);
               //Size(poses, "11", "12")
 
-              comparingDistance(poses)
+              comparingDistance(poses, height)
             } catch (e) {
               console.error(e.message);
             }            
@@ -122,6 +125,21 @@ function Camera (){
               height:480
           }}
           />
+          <div
+            style= {{
+             
+              position:'relative',
+              marginLeft:'auto',
+              marginRight: "auto",
+              justifyContent: 'flex-end',
+              padding:500
+            }}
+          >
+            <label>What's your height? (cm)</label>
+            <input type={"number"} onChange={e=>setHeight(e.target.value)}/>
+          </div>
+
+          
         </div>
       )
 

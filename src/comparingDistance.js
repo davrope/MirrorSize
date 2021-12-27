@@ -3,8 +3,8 @@ import _ from 'lodash';
 import { blazeposearray, iterateSize } from "./pose-detection/utilities";
 import { arm_span_arr } from "./pose-detection/utilities";
 
-export default function comparingDistance(poses){
-    let height = 178 //cm
+export default function comparingDistance(poses, height){
+    // let height = 178 //cm
     var size_factor = 0;
     var real_size = [];
 
