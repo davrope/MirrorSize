@@ -75,7 +75,7 @@ function Camera (){
         canvas.current.height = videoHeight;
 
         drawKeypoints(poses["0"]["keypoints"], 0.6, ctx);
-        drawSkeleton(poses["0"]["keypoints"], 0.6, ctx);
+        drawSkeleton(poses["0"]["keypoints"], ctx);
 
 
 

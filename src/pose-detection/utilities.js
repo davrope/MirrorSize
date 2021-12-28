@@ -1,42 +1,45 @@
-import * as posenet from '@tensorflow-models/posenet';
 import Size from '../Size';
 import * as tf from '@tensorflow/tfjs-core';
 
+import * as posedetection from '@tensorflow-models/pose-detection';
+
 const COLOR = 'aqua';
+const COLOR_LINE = 'gray'
 const LINE_WIDTH = 2;
 
+// (keypoints, minConfidence, ctx, scale = 1
 
 
-export function drawSkeleton(keypoints, minConfidence, ctx, scale = 1) {
+export function drawSkeleton(keypoints, ctx) {
     const adjacentKeyPoints =
-        posenet.getAdjacentKeyPoints(keypoints, minConfidence);
-  
-    // function toTuple({y, x}) {
-    //   return [y, x];
-      
-    // }
-  
-    adjacentKeyPoints.forEach((keypoints) => {
-      drawSegment(
-          keypoints[0]["x"], keypoints[0]["y"], keypoints[1]["x"], keypoints[1]["y"], COLOR,
-          scale =1, ctx);
+
+        posedetection.util.getAdjacentPairs(posedetection.SupportedModels.BlazePose);
+
+    adjacentKeyPoints.forEach(([
+                                                                      i, j
+                                                                    ]) => {
+      const kp1 = keypoints[i];
+      const kp2 = keypoints[j];
+
+      // If score is null, just show the keypoint.
+      const score1 = kp1.score != null ? kp1.score : 1;
+      const score2 = kp2.score != null ? kp2.score : 1;
+      const scoreThreshold = 0.65 || 0;
+
+      if (score1 >= scoreThreshold && score2 >= scoreThreshold) {
+        ctx.beginPath();
+        ctx.moveTo(kp1.x, kp1.y);
+        ctx.lineTo(kp2.x, kp2.y);
+        ctx.strokeStyle = COLOR_LINE;
+        ctx.stroke();
+      }
     });
 
 
-    // adjacentKeyPoints.forEach((keypoints) => {
-        
-    //     drawSegment(
-    //         keypoints[0].position,keypoints[1].position, COLOR,
-    //         scale =1, ctx);
-    //   });
-  
 
-    //console.log(typeof(keypoints[0]["y"]))
 }
   
-  /**
-   * Draw pose keypoints onto a canvas
-   */
+
 export function drawKeypoints(keypoints, minConfidence, ctx, scale = 1) {
     for (let i = 0; i < keypoints.length; i++) {
         const keypoint = keypoints[i];
@@ -44,14 +47,9 @@ export function drawKeypoints(keypoints, minConfidence, ctx, scale = 1) {
         if (keypoint.score < minConfidence) {
             continue;
         }
-    
-        //const {y, x} = keypoint;
 
         const x = keypoint.x;
         const y = keypoint.y;
-
-        // Agregado reciéntemente:
-        // const {y, x}  = keypoint.position
 
         drawPoint(ctx, y * scale, x * scale, 3, COLOR);
     }
@@ -65,26 +63,6 @@ export function drawPoint(ctx, y, x, r, color) {
     ctx.fill();
 }
   
-  /**
-   * Draws a line on a canvas, i.e. a joint
-   */
-// export function drawSegment([ay, ax], [by, bx], color, scale, ctx) {
-//     ctx.beginPath();
-//     ctx.moveTo(ax * scale, ay * scale);
-//     ctx.lineTo(bx * scale, by * scale);
-//     ctx.lineWidth = LINE_WIDTH;
-//     ctx.strokeStyle = color;
-//     ctx.stroke();
-// }
-
-export function drawSegment(ax, ay, bx, by, color, scale, ctx) {
-    ctx.beginPath();
-    ctx.moveTo(ax * scale, ay * scale);
-    ctx.lineTo(bx * scale, by * scale);
-    ctx.lineWidth = LINE_WIDTH;
-    ctx.strokeStyle = color;
-    ctx.stroke();
-}
 
 
 export const blazeposearray = [["11", "12"],["24", "23"],["12", "24"],["11", "23"],["14", "16"],["13", "15"]]
