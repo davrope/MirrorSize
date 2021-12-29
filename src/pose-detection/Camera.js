@@ -56,11 +56,13 @@ function Camera (){
             const timestamp = performance.now();
             const poses = await detector.estimatePoses(video, estimationConfig, timestamp)
             
+            
             // console.log(poses["0"]["keypoints"]);
             try {
               drawCanvas(poses, video, videoWidth, videoHeight, canvasRef);
               // Size(poses);
               //Size(poses, "11", "12")
+              // console.log(poses["0"]["keypoints"])
 
               comparingDistance(poses, height)
             } catch (e) {
