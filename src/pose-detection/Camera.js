@@ -29,7 +29,7 @@ function Camera (){
         
         setInterval(() => {
             detect(detector);
-          }, 100);
+          }, 150);
     }
 
     myDetector();

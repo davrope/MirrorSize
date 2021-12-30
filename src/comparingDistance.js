@@ -1,7 +1,7 @@
 import Size from "./Size";
 import _ from 'lodash';
-import { blazeposearray, iterateSize, testVariables, t_shirt_array } from "./pose-detection/utilities";
-import { arm_span_arr } from "./pose-detection/utilities";
+import { blazeposearray, iterateSize, t_shirt_array } from "./pose-detection/utilities";
+import { arm_span_arr, half_span_arr } from "./pose-detection/utilities";
 
 export default function comparingDistance(poses, height){
     // let height = 178 //cm
@@ -9,7 +9,9 @@ export default function comparingDistance(poses, height){
     var real_size = [];
     
 
-    var results_arr  = iterateSize(arm_span_arr, poses);
+    // var results_arr  = iterateSize(arm_span_arr, poses);
+
+    var results_arr = iterateSize(half_span_arr, poses); //using just 1 arm
     // console.log(results_arr.length)
     // var blaze_results_arr = iterateSize(blazeposearray, poses);
 
@@ -35,15 +37,20 @@ export default function comparingDistance(poses, height){
     //     // console.log(typeof(real_size))
     //     // console.log(real_size) 
     // }
+    
+ 
 
-    if(results_arr.length ===5 && tshirt_results_array.length===2){
-        const cv_distance = _.sum(results_arr);
-        size_factor = (height/cv_distance);
+    // The results_arr.length should be able to be 7. Why is this not happening?
+    // console.log(results_arr)
+
+    if(results_arr.length ===3 && tshirt_results_array.length===2){ 
+        const cv_distance = _.sum(results_arr)*2 + Size(poses, 11, 12);
+        size_factor = ((height)/cv_distance);
         real_size= tshirt_results_array.map(x=>x*size_factor)
 
         console.log(real_size)
     }
-    // console.log(real_size)
+    
 
     // const cv_distance = Size(poses, "19", "20");
     // size_factor = height/cv_distance;

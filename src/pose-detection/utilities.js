@@ -72,55 +72,29 @@ export const t_shirt_array = [["11", "12"],["24", "23"] ]
 
 export const arm_span_arr = [["12", "11"], ["14", "12"], ["14", "16"], ["16", "20"], ["11", "13"], ["13", "15"], ["15", "19"]]
 
+export const half_span_arr = [["14", "12"], ["14", "16"], ["16", "20"]]
+
 
 // blazeposearray = [shoulders, hips, rshouldertorhip, llshouldertolhip, relbowtorwrist, lelbowtolwrist] len = 6
 //arm_span_arr = [shoulders, rshouldertorelbow, relbowtorwrist, rwristtorfinger, lshouldertolelbow, lelbowtolwrist, lwristtolfinger] len = 7
 
 
 export function iterateSize(arr, poses) {
-    var startTime = performance.now()
-
-
-
+    // var startTime = performance.now()
     var result_arr = []
     for(let i =0, len = arr.length; i<len; i++){
+        // var result_arr = []
         var currentSize = Size(poses, arr[i][0], arr[i][1])
         
         if (typeof(currentSize)==='number'){
+            // console.log(arr[i][0], arr[i][1])
             result_arr.push(currentSize);
-        }
-        // console.log(result_arr)
-        // if(result_arr.length = len){
-        //     return result_arr
-        // }
-        
+            
+        }    
     } 
 
-    // arr.forEach(([
-    //                     i, j
-    //                              ]) =>{
-    //     const kp1 = keypoints[i];
-    //     const kp2 = keypoints[j];
 
-    //     var currentSize = Size(poses, kp1, kp2)
-    //     if (typeof(currentSize)==='number'){
-    //         result_arr.push(currentSize);
-    //     }
-    //   }
-    // // return result_arr
-    // return result_arr
-
-    // arr.forEach(([i, j])=>{
-    //     const kp1 = arr[i];
-    //     const kp2 = arr[j];
-
-
-    //     var currentSize = Size(poses, kp1, kp2)
-    //     if (typeof(currentSize)==='number'){
-    //         result_arr.push(currentSize);
-    //     }
-    // })
-    var endTime = performance.now()
+    // var endTime = performance.now()
     // console.log(`Call to doSomething took ${endTime - startTime} milliseconds`)
 
 
