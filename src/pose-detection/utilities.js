@@ -103,10 +103,10 @@ export function iterateSize(arr, poses) {
 
 
 export const clothes ={
-    small: [43, 70],
-    medium: [50, 76],
-    large: [56, 77],
-    xlarge: [58, 80]
+    Small: [43, 70],
+    Medium: [50, 76],
+    Large: [56, 77],
+    XLarge: [58, 80]
 }
 
 
