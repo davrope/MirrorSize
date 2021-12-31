@@ -4,8 +4,6 @@ import Webcam from "react-webcam";
 import * as poseDetection from '@tensorflow-models/pose-detection';
 import * as tf from '@tensorflow/tfjs-core';
 import '@tensorflow/tfjs-backend-webgl';
-import Size from "../Size";
-import Sizecopy from "../Size";
 import comparingDistance from "../comparingDistance";
 
 function Camera (){
@@ -13,6 +11,7 @@ function Camera (){
     const canvasRef = useRef(null);
 
     const [height, setHeight] = useState(0);
+    const [size, setSize] = useState()
 
 
     // Load BlazePose
@@ -60,9 +59,6 @@ function Camera (){
             // console.log(poses["0"]["keypoints"]);
             try {
               drawCanvas(poses, video, videoWidth, videoHeight, canvasRef);
-              // Size(poses);
-              //Size(poses, "11", "12")
-              // console.log(poses["0"]["keypoints"])
 
               comparingDistance(poses, height)
             } catch (e) {
@@ -135,7 +131,12 @@ function Camera (){
                 borderColor: 'gray'
               }} 
             />
+            <h2>
+            Your size should be M
+            </h2>
           </div>
+
+          
 
           
         </div>

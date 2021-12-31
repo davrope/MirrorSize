@@ -109,3 +109,4 @@ export const clothes ={
     xlarge: [58, 80]
 }
 
+

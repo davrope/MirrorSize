@@ -3,6 +3,7 @@ import Camera from './pose-detection/Camera';
 import './App.css';
 
 
+
 class App extends React.Component{
 
     render(){
@@ -13,6 +14,7 @@ class App extends React.Component{
                 </h1>
                 Checkout what would be your best fit!
                 <Camera/>
+                
             </div>
 
         )
