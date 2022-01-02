@@ -47,7 +47,7 @@ export default function comparingDistance(poses, height){
         size_str = "Loading"
     }
 
-    console.log(size_str)
+    // console.log(size_str)
     return size_str;
 
 }

@@ -60,7 +60,7 @@ function Camera (){
             try {
               drawCanvas(poses, video, videoWidth, videoHeight, canvasRef);
 
-              comparingDistance(poses, height)
+              setSize(comparingDistance(poses, height));
             } catch (e) {
               console.error(e.message);
             }            
@@ -132,7 +132,10 @@ function Camera (){
               }} 
             />
             <h2>
-            Your size should be M
+            Your size should be:
+            <h2>
+            {size}
+            </h2>
             </h2>
           </div>
 
