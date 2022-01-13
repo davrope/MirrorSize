@@ -68,7 +68,7 @@ export function drawPoint(ctx, y, x, r, color) {
 
 export const blazeposearray = [["11", "12"],["24", "23"],["12", "24"],["11", "23"],["14", "16"],["13", "15"]]
 
-export const t_shirt_array = [["11", "12"],["24", "23"] ]
+export const t_shirt_array = [["11", "12"],["12", "24"] ]
 
 export const arm_span_arr = [["12", "11"], ["14", "12"], ["14", "16"], ["16", "20"], ["11", "13"], ["13", "15"], ["15", "19"]]
 

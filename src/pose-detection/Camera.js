@@ -28,7 +28,7 @@ function Camera (){
         
         setInterval(() => {
             detect(detector);
-          }, 150);
+          }, 100);
     }
 
     myDetector();
@@ -59,8 +59,11 @@ function Camera (){
             // console.log(poses["0"]["keypoints"]);
             try {
               drawCanvas(poses, video, videoWidth, videoHeight, canvasRef);
-
-              setSize(comparingDistance(poses, height));
+              const distance = comparingDistance(poses, height);
+              if(distance == 'Small'|'Medium'|'Large'|'Xlarge'){
+                setSize(distance);
+              }
+              console.log((comparingDistance(poses, height)));
             } catch (e) {
               console.error(e.message);
             }            
