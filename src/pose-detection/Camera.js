@@ -136,9 +136,11 @@ function Camera (){
             />
             <h2>
             Your size should be:
-            <h2>
+            <h3>
             {size}
-            </h2>
+
+            
+            </h3>
             </h2>
           </div>
 

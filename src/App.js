@@ -10,7 +10,7 @@ class App extends React.Component{
         return(
             <div >
                 <h1 style={{textAlign: 'center'}}>
-                    Welcome to MySize!
+                    Welcome to Mirror Size!
                 </h1>
                 Checkout what would be your best fit!
                 <Camera/>

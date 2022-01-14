@@ -4,7 +4,7 @@ import {sqrt} from 'mathjs'
 
 import * as posedetection from '@tensorflow-models/pose-detection';
 
-const COLOR = 'aqua';
+const COLOR = '#27d594';
 const COLOR_LINE = 'gray'
 const LINE_WIDTH = 2;
 
