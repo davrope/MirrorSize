@@ -81,10 +81,10 @@ export const half_span_arr = [["14", "12"], ["14", "16"], ["16", "20"]]
 
 export function iterateSize(arr, poses) {
     // var startTime = performance.now()
-    var result_arr = []
+    let result_arr = []
     for(let i =0, len = arr.length; i<len; i++){
-        // var result_arr = []
-        var currentSize = Size(poses, arr[i][0], arr[i][1])
+        // let result_arr = []
+        let currentSize = Size(poses, arr[i][0], arr[i][1])
         
         if (typeof(currentSize)==='number'){
             // console.log(arr[i][0], arr[i][1])
