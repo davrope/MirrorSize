@@ -63,7 +63,7 @@ function Camera (){
               if(distance == 'Small'|'Medium'|'Large'|'Xlarge'){
                 setSize(distance);
               }
-              console.log((comparingDistance(poses, height)));
+              // console.log((comparingDistance(poses, height)));
             } catch (e) {
               console.error(e.message);
             }            

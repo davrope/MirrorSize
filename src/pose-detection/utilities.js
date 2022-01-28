@@ -3,6 +3,7 @@ import * as tf from '@tensorflow/tfjs-core';
 import {sqrt} from 'mathjs'
 
 import * as posedetection from '@tensorflow-models/pose-detection';
+import { result } from 'lodash';
 
 const COLOR = '#27d594';
 const COLOR_LINE = 'gray'
@@ -86,11 +87,16 @@ export function iterateSize(arr, poses) {
         // let result_arr = []
         let currentSize = Size(poses, arr[i][0], arr[i][1])
         
-        if (typeof(currentSize)==='number'){
-            // console.log(arr[i][0], arr[i][1])
-            result_arr.push(currentSize);
+        // if (typeof(currentSize)==='number'){
+        //     // console.log(arr[i][0], arr[i][1])
+        //     result_arr.push(currentSize);
             
-        }    
+        // }    
+        try{
+            result_arr.push(currentSize)
+        }catch(e){
+            console.log("This is an error")
+        }
     } 
 
 

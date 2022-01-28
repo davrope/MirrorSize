@@ -15,6 +15,8 @@ export default function comparingDistance(poses, height){
     
     let results_arr = iterateSize(half_span_arr, poses); //using just 1 arm
     let tshirt_results_array = iterateSize(t_shirt_array, poses);
+    // console.log("tshirt2: "+tshirt_results_array.length)
+    // console.log("results3: "+results_arr.length)
 // *********************************************************
 // What if we do not use the filter of the whole pose?
 
@@ -46,8 +48,9 @@ export default function comparingDistance(poses, height){
 // ****************************************************************
     
     // por qué nunca se cumple results_arr.length ===3 && tshirt_results_array.length ==2???????
+    // resuelto: por la condición de solo agregar al array si el punto es del tipo número.
 
-    if(results_arr.length ==3 && tshirt_results_array.length==2){ 
+    if(results_arr.length ===3 && tshirt_results_array.length===2){ 
         const cv_distance = _.sum(results_arr)*2 + Size(poses, 11, 12);
         size_factor = ((height)/cv_distance);
 
