@@ -5,6 +5,7 @@ import * as poseDetection from '@tensorflow-models/pose-detection';
 import * as tf from '@tensorflow/tfjs-core';
 import '@tensorflow/tfjs-backend-webgl';
 import comparingDistance from "../comparingDistance";
+import { TextureManager } from "@tensorflow/tfjs-backend-webgl/dist/texture_manager";
 
 function Camera (){
     const webcamRef = useRef(null);
@@ -66,6 +67,7 @@ function Camera (){
               // console.log((comparingDistance(poses, height)));
             } catch (e) {
               console.error(e.message);
+              // setSize("Loading...")
             }            
           }
     }

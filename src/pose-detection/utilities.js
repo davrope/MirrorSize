@@ -86,17 +86,32 @@ export function iterateSize(arr, poses) {
     for(let i =0, len = arr.length; i<len; i++){
         // let result_arr = []
         let currentSize = Size(poses, arr[i][0], arr[i][1])
+        // let currentSize = mySize.elementDistance
         
+
+        // **********Ejecutando el código de abajo nunca se cumple que half_span_arr ===3**********
         // if (typeof(currentSize)==='number'){
         //     // console.log(arr[i][0], arr[i][1])
         //     result_arr.push(currentSize);
             
-        // }    
+        // }
+        // ******************************************************************************************
+
         try{
             result_arr.push(currentSize)
-        }catch(e){
-            console.log("This is an error")
-        }
+         } catch(e){
+             console.log("This is an error")
+         }
+
+
+        // if (mySize.score_avg>0.8){
+        //     result_arr.push(currentSize)
+        // }
+        // try{
+        //     result_arr.push(currentSize)
+        // }catch(e){
+        //     console.log("This is an error")
+        // }
     } 
 
 
