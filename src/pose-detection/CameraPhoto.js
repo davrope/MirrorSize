@@ -11,6 +11,7 @@ function CameraPhoto(){
 
     const [height, setHeight] = useState(0);
     const [size, setSize] = useState();
+    
 
     const myDetector= async ()=>{
         const model = poseDetection.SupportedModels.BlazePose;
