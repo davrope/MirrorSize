@@ -31,7 +31,7 @@ const WebcamCapture = ()=>{
     //       }, 100);
     // }
 
-    const myDetector = async()=>{
+    const myDetector = async(image)=>{
         const model = poseDetection.SupportedModels.BlazePose;
         const detectorConfig={
             runtime: 'tfjs',
@@ -44,9 +44,9 @@ const WebcamCapture = ()=>{
         // setInterval(()=>{
         //     detect(detector);
         // }, 100);
-        detect(detector);
-        console.log("My detector is being called!")
-        console.log(photo)
+        detect(detector, image);
+        // console.log("My detector is being called!")
+        // console.log(image)
 
     }
 
@@ -57,14 +57,22 @@ const WebcamCapture = ()=>{
 
     
 
-    const detect = async(detector)=>{
+    const detect = async(detector, image)=>{
 
         if(typeof (photo) !==""){
 
             const estimationConfig = {flipHorizontal:true}
             const timestamp = performance.now();
-            const poses = await detector.estimatePoses(photo, estimationConfig, timestamp)
-            console.log(poses);
+
+            // console.log(image);
+            console.log(typeof(image))
+
+            // console.log(webcamRef.current)
+            const poses = await detector.estimatePoses(image, estimationConfig, timestamp)
+            console.log(poses)
+            
+            
+            
             try{
                 const distance = comparingDistance(poses, height);
                 if(distance == 'Small'|'Medium'|'Large'|'Xlarge'){
@@ -104,7 +112,22 @@ const WebcamCapture = ()=>{
             const imageSrc = webcamRef.current.getScreenshot();
             // console.log("Photo taken!")
             setPhoto(imageSrc);
-            myDetector();
+            
+            
+            // const imageHTML = document.getElementById({photo}).src = {photo}
+            
+            // console.log(imageSrc)
+
+            const x = document.createElement("img");
+            x.src = imageSrc
+            x.width = 640
+            x.height = 480
+            myDetector(x);
+            
+            
+
+           
+            
             
         },
         [webcamRef, setPhoto]
@@ -113,8 +136,12 @@ const WebcamCapture = ()=>{
 
 
     // Aquí puedo hacer algo con la foto
-    console.log(webcamRef.current);
-    console.log({photo})
+    // console.log(webcamRef.current);
+    // console.log({photo})
+    
+    // console.log(photo)
+
+
 
     return(
         <div>
@@ -128,7 +155,7 @@ const WebcamCapture = ()=>{
                         screenshotFormat= "image/jpeg"
                         width={640}
                         videoConstraints= {videoConstraints}
-                        />: <img src = {photo}/>
+                        />: <img src = {photo} id ={photo} />
                     }
                 </div>
 
