@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
 import comparingDistance from "../comparingDistance";
 
@@ -15,6 +15,9 @@ const WebcamCapture = ()=>{
     const [photo, setPhoto] = useState('');
     const [height, setHeight] = useState(0);
     const [size, setSize] = useState();
+    const [myImage, setMyImage] = useState();
+
+    console.log("Height:" + height);
 
     // const myDetector= async ()=>{
     //     const model = poseDetection.SupportedModels.BlazePose;
@@ -30,6 +33,12 @@ const WebcamCapture = ()=>{
     //         detect(detector);
     //       }, 100);
     // }
+
+    useEffect(
+        ()=>{
+            myDetector(myImage);
+        },[photo]
+    )
 
     const myDetector = async(image)=>{
         const model = poseDetection.SupportedModels.BlazePose;
@@ -57,6 +66,7 @@ const WebcamCapture = ()=>{
 
     
 
+    
     const detect = async(detector, image)=>{
 
         if(typeof (photo) !==""){
@@ -74,6 +84,7 @@ const WebcamCapture = ()=>{
             
             
             try{
+                console.log("Height inside detect:"+height)
                 const distance = comparingDistance(poses, height);
                 if(distance == 'Small'|'Medium'|'Large'|'Xlarge'){
                     setSize(distance);
@@ -118,11 +129,14 @@ const WebcamCapture = ()=>{
             
             // console.log(imageSrc)
 
-            const x = document.createElement("img");
-            x.src = imageSrc
-            x.width = 640
-            x.height = 480
-            myDetector(x);
+            const image = document.createElement("img");
+            image.src = imageSrc
+            image.width = 640
+            image.height = 480
+            // myDetector(image)
+
+            setMyImage(image);
+            
             
             
 
@@ -130,7 +144,7 @@ const WebcamCapture = ()=>{
             
             
         },
-        [webcamRef, setPhoto]
+        [webcamRef]
     );
 
 
