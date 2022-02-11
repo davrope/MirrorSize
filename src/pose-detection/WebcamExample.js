@@ -175,7 +175,22 @@ const WebcamCapture = ()=>{
                         videoConstraints= {videoConstraints}
                         />: <img src = {photo} id ={photo} />
                     }
+                    <canvas
+                        ref = {canvasRef}
+                        style = {{
+                        position: "absolute",
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                        left: 0,
+                        right:0,
+                        textAlign: 'center',
+                        zindex: 9,
+                        width: 640,
+                        height:480
+                        }}
+                    />
                 </div>
+
                 {/* <canvas
                     ref = {canvasRef}
                     style = {{
