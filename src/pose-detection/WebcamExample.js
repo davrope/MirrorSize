@@ -2,8 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
 import comparingDistance from "../comparingDistance";
 
+
 import * as poseDetection from '@tensorflow-models/pose-detection';
 import '@tensorflow/tfjs-backend-webgl';
+
+import { drawKeypoints, drawSkeleton } from "./utilities";
 
 const videoConstraints = {
     width: 640,
@@ -16,6 +19,8 @@ const WebcamCapture = ()=>{
     const [height, setHeight] = useState(0);
     const [size, setSize] = useState();
     const [myImage, setMyImage] = useState();
+
+    const canvasRef = useRef(null);
 
     console.log("Height:" + height);
 
@@ -86,6 +91,7 @@ const WebcamCapture = ()=>{
             try{
                 console.log("Height inside detect:"+height)
                 const distance = comparingDistance(poses, height);
+                drawCanvas(poses, image, videoConstraints.width, videoConstraints.height, canvasRef);
                 if(distance == 'Small'|'Medium'|'Large'|'Xlarge'){
                     setSize(distance);
                 }
@@ -135,26 +141,24 @@ const WebcamCapture = ()=>{
             image.height = 480
             // myDetector(image)
 
-            setMyImage(image);
-            
-            
-            
-
-           
-            
-            
+            setMyImage(image);  
+    
         },
         [webcamRef]
     );
 
 
+    const drawCanvas = (poses, img, imgWidth, imgHeight, canvas)=>{
+        const ctx =  canvas.current.getContext("2d");
+        canvas.current.width = imgWidth;
+        canvas.current.height = imgHeight;
 
-    // Aquí puedo hacer algo con la foto
-    // console.log(webcamRef.current);
-    // console.log({photo})
-    
-    // console.log(photo)
+        drawKeypoints(poses["0"]["keypoints"], 0.6, ctx);
+        drawSkeleton(poses["0"]["keypoints"], ctx);
 
+
+
+    }
 
 
     return(
@@ -172,8 +176,25 @@ const WebcamCapture = ()=>{
                         />: <img src = {photo} id ={photo} />
                     }
                 </div>
+                {/* <canvas
+                    ref = {canvasRef}
+                    style = {{
+                    position: "absolute",
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                    left: 0,
+                    right:0,
+                    textAlign: 'center',
+                    zindex: 9,
+                    width: 640,
+                    height:480
+                    }}
+                 /> */}
+
+
 
             </div>
+
             {/* <Webcam
                 audio = {false}
                 height = {480}
