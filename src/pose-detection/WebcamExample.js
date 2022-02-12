@@ -89,11 +89,14 @@ const WebcamCapture = ()=>{
             
             
             try{
-                console.log("Height inside detect:"+height)
+                
                 const distance = comparingDistance(poses, height);
+                console.log(distance)
+                
                 drawCanvas(poses, image, videoConstraints.width, videoConstraints.height, canvasRef);
                 if(distance == 'Small'|'Medium'|'Large'|'Xlarge'){
                     setSize(distance);
+                    console.log("size:" +size)
                 }
             }catch(e){
                 console.log(e.message)
@@ -241,7 +244,7 @@ const WebcamCapture = ()=>{
             Your size should be:
             </h2>
             <h3>
-            {size}
+                {size}
             </h3>
           </div>
             <button onClick={capture}>Capture photo</button>

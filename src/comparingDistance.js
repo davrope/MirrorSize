@@ -70,8 +70,9 @@ export default function comparingDistance(poses, height){
                 const w = clothes[property][0]-real_size[0];
                 const h = clothes[property][1]-real_size[1];
 
-                if(w<0 && h<0)
+                if(w<0 || h<0){
                     continue;
+                }
                 const property_name = property;
                 return property_name
             }
