@@ -24,20 +24,6 @@ const WebcamCapture = ()=>{
 
     console.log("Height:" + height);
 
-    // const myDetector= async ()=>{
-    //     const model = poseDetection.SupportedModels.BlazePose;
-    //     const detectorConfig = {
-    //     runtime: 'tfjs',
-    //     enableSmoothing: true,
-    //     modelType: 'full'
-    //     };
-        
-    //     const detector = await poseDetection.createDetector(model, detectorConfig);
-        
-    //     setInterval(() => {
-    //         detect(detector);
-    //       }, 100);
-    // }
 
     useEffect(
         ()=>{
@@ -55,20 +41,10 @@ const WebcamCapture = ()=>{
 
         const detector = await poseDetection.createDetector(model, detectorConfig);
 
-        // setInterval(()=>{
-        //     detect(detector);
-        // }, 100);
         detect(detector, image);
-        // console.log("My detector is being called!")
-        // console.log(image)
+
 
     }
-
-    // const image = new Image();
-    // image.src = photo
-    // myDetector();
-
-
     
 
     
@@ -79,25 +55,19 @@ const WebcamCapture = ()=>{
             const estimationConfig = {flipHorizontal:true}
             const timestamp = performance.now();
 
-            // console.log(image);
-            console.log(typeof(image))
-
-            // console.log(webcamRef.current)
             const poses = await detector.estimatePoses(image, estimationConfig, timestamp)
-            console.log(poses)
-            
-            
-            
+
             try{
-                
                 const distance = comparingDistance(poses, height);
                 console.log(distance)
                 
                 drawCanvas(poses, image, videoConstraints.width, videoConstraints.height, canvasRef);
-                if(distance == 'Small'|'Medium'|'Large'|'Xlarge'){
-                    setSize(distance);
-                    console.log("size:" +size)
-                }
+                // if(distance == 'Small'|'Medium'|'Large'|'Xlarge'){
+                //     setSize(distance);
+                //     console.log("size:" +size)
+                // }
+
+                setSize(distance)
             }catch(e){
                 console.log(e.message)
             }
@@ -106,25 +76,6 @@ const WebcamCapture = ()=>{
         
     }
 
-    // const detect = async(detector)=>{
-    //     if(
-    //         typeof webcamRef.current !== "undefined" &&
-    //         webcamRef.current !== null
-    //     ){
-    //         const estimationConfig = {flipHorizontal:true}
-    //         const timestamp = performance.now();
-    //         const poses = await detector.estimatePoses(photo, estimationConfig, timestamp)
-    //         console.log(poses);
-    //         try{
-    //             const distance = comparingDistance(poses, height);
-    //             if(distance == 'Small'|'Medium'|'Large'|'Xlarge'){
-    //                 setSize(distance);
-    //             }
-    //         }catch(e){
-    //             console.log(e.message)
-    //         }
-    //     }
-    // }
 
     const webcamRef = React.useRef(null)
     const capture = React.useCallback(
@@ -133,16 +84,11 @@ const WebcamCapture = ()=>{
             // console.log("Photo taken!")
             setPhoto(imageSrc);
             
-            
-            // const imageHTML = document.getElementById({photo}).src = {photo}
-            
-            // console.log(imageSrc)
-
             const image = document.createElement("img");
             image.src = imageSrc
             image.width = 640
             image.height = 480
-            // myDetector(image)
+            
 
             setMyImage(image);  
     
@@ -194,33 +140,9 @@ const WebcamCapture = ()=>{
                     />
                 </div>
 
-                {/* <canvas
-                    ref = {canvasRef}
-                    style = {{
-                    position: "absolute",
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                    left: 0,
-                    right:0,
-                    textAlign: 'center',
-                    zindex: 9,
-                    width: 640,
-                    height:480
-                    }}
-                 /> */}
-
-
-
             </div>
 
-            {/* <Webcam
-                audio = {false}
-                height = {480}
-                ref = {webcamRef}
-                screenshotFormat= "image/jpeg"
-                width={640}
-                videoConstraints= {videoConstraints}
-            /> */}
+
             <div
             style= {{
 
@@ -228,7 +150,7 @@ const WebcamCapture = ()=>{
               marginLeft:'auto',
               marginRight: "auto",
               justifyContent: 'flex-end',
-            //   padding:500
+           
             }}  
           >
             <label>What's your height? (cm) </label>
