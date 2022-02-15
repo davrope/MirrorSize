@@ -1,11 +1,11 @@
-import React, { useRef, useState, useEffect } from "react";
-import { blazeposearray, drawKeypoints, drawSkeleton } from "./utilities";
+import React, { useRef, useState } from "react";
+import {drawKeypoints, drawSkeleton } from "./utilities";
 import Webcam from "react-webcam";
 import * as poseDetection from '@tensorflow-models/pose-detection';
-import * as tf from '@tensorflow/tfjs-core';
+
 import '@tensorflow/tfjs-backend-webgl';
 import comparingDistance from "../comparingDistance";
-import { TextureManager } from "@tensorflow/tfjs-backend-webgl/dist/texture_manager";
+
 
 function Camera (){
     const webcamRef = useRef(null);

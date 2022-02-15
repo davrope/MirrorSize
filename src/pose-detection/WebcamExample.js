@@ -62,10 +62,6 @@ const WebcamCapture = ()=>{
                 console.log(distance)
                 
                 drawCanvas(poses, image, videoConstraints.width, videoConstraints.height, canvasRef);
-                // if(distance == 'Small'|'Medium'|'Large'|'Xlarge'){
-                //     setSize(distance);
-                //     console.log("size:" +size)
-                // }
 
                 setSize(distance)
             }catch(e){
@@ -81,7 +77,7 @@ const WebcamCapture = ()=>{
     const capture = React.useCallback(
         ()=>{
             const imageSrc = webcamRef.current.getScreenshot();
-            // console.log("Photo taken!")
+            
             setPhoto(imageSrc);
             
             const image = document.createElement("img");

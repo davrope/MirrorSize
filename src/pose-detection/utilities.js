@@ -1,13 +1,10 @@
 import Size from '../Size';
-import * as tf from '@tensorflow/tfjs-core';
-import {sqrt} from 'mathjs'
 
 import * as posedetection from '@tensorflow-models/pose-detection';
-import { result } from 'lodash';
 
 const COLOR = '#27d594';
 const COLOR_LINE = 'gray'
-const LINE_WIDTH = 2;
+
 
 // (keypoints, minConfidence, ctx, scale = 1
 
@@ -76,26 +73,13 @@ export const arm_span_arr = [["12", "11"], ["14", "12"], ["14", "16"], ["16", "2
 export const half_span_arr = [["14", "12"], ["14", "16"], ["16", "20"]]
 
 
-// blazeposearray = [shoulders, hips, rshouldertorhip, llshouldertolhip, relbowtorwrist, lelbowtolwrist] len = 6
-//arm_span_arr = [shoulders, rshouldertorelbow, relbowtorwrist, rwristtorfinger, lshouldertolelbow, lelbowtolwrist, lwristtolfinger] len = 7
-
-
 export function iterateSize(arr, poses) {
-    // var startTime = performance.now()
+
     let result_arr = []
     for(let i =0, len = arr.length; i<len; i++){
-        // let result_arr = []
-        let currentSize = Size(poses, arr[i][0], arr[i][1])
-        // let currentSize = mySize.elementDistance
         
+        let currentSize = Size(poses, arr[i][0], arr[i][1])
 
-        // **********Ejecutando el código de abajo nunca se cumple que half_span_arr ===3**********
-        // if (typeof(currentSize)==='number'){
-        //     // console.log(arr[i][0], arr[i][1])
-        //     result_arr.push(currentSize);
-            
-        // }
-        // ******************************************************************************************
 
         try{
             result_arr.push(currentSize)
@@ -104,20 +88,8 @@ export function iterateSize(arr, poses) {
          }
 
 
-        // if (mySize.score_avg>0.8){
-        //     result_arr.push(currentSize)
-        // }
-        // try{
-        //     result_arr.push(currentSize)
-        // }catch(e){
-        //     console.log("This is an error")
-        // }
+
     } 
-
-
-    // var endTime = performance.now()
-    // console.log(`Call to doSomething took ${endTime - startTime} milliseconds`)
-
 
     return result_arr
 }
