@@ -19,10 +19,10 @@ const WebcamCapture = ()=>{
     const [height, setHeight] = useState(0);
     const [size, setSize] = useState();
     const [myImage, setMyImage] = useState();
+    const [timer, setTimer] = useState(null);
+    
 
     const canvasRef = useRef(null);
-
-    console.log("Height:" + height);
 
 
     useEffect(
@@ -30,6 +30,24 @@ const WebcamCapture = ()=>{
             myDetector(myImage);
         },[photo]
     )
+
+    useEffect(
+        ()=>{
+            
+            if (timer ===0){
+                setTimer(null);
+            }
+
+            if(!timer) return;
+
+            const intervalId = setInterval(()=>{
+                setTimer(timer-1);
+            }, 1000);
+
+            return ()=>clearInterval(intervalId);
+        }, [timer]);
+
+
 
     const myDetector = async(image)=>{
         const model = poseDetection.SupportedModels.BlazePose;
@@ -74,6 +92,15 @@ const WebcamCapture = ()=>{
 
 
     const webcamRef = React.useRef(null)
+
+    const handleClick =()=>{
+        setTimer(3);
+
+        setTimeout(()=>{
+            capture();
+        }, 3000)
+    }
+    
     const capture = React.useCallback(
         ()=>{
             const imageSrc = webcamRef.current.getScreenshot();
@@ -108,6 +135,7 @@ const WebcamCapture = ()=>{
 
     return(
         <div>
+            <h3 style={{fontSize:32}}>{timer}</h3>
             <div className="webcam-container">
                 <div className="webcam-img">
 
@@ -158,6 +186,7 @@ const WebcamCapture = ()=>{
                 borderColor: 'gray'
               }} 
             />
+            
             <h2>
             Your size should be:
             </h2>
@@ -165,7 +194,7 @@ const WebcamCapture = ()=>{
                 {size}
             </h3>
           </div>
-            <button onClick={capture}>Capture photo</button>
+            <button onClick={handleClick}>Capture photo</button>
         </div>
     )
 }
