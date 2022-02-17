@@ -14,6 +14,8 @@ That's why **Mirror Size** was created! I want to contribute to ideas that can t
 * To estimate the "real" size using the webcam, it is stablished in the program that the distance from one hand to another is equal to the height. According to [Scientific American](https://www.scientificamerican.com/article/human-body-ratios/) this ratio is almost 1:1. *It is important to note that the app offers an estimation and not real measurements.*
 * If you want to make other products size estimations you would need to create an array of the points of interest using the BlazePose documentation or the model of your preference. Then you would have to edit the comparingDistance file to make that measurement. You can use the Size and iterateSize functions to make the calculations easier.
 
+### Try the [live demo](https://davrope.github.io/MirrorSize/)
+
 
 
 # Getting Started with Create React App
