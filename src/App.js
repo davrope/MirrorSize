@@ -1,8 +1,10 @@
 import React from 'react';
 // import Camera from './pose-detection/Camera';
 import './App.css';
+import Landing from './Landing';
+import { Routes, Route } from 'react-router-dom';
 // import Webcam from 'react-webcam';
-import WebcamCapture from './pose-detection/WebcamExample'; 
+import WebcamCapture from './pose-detection/WebcamCapture'; 
 
 
 
@@ -10,15 +12,16 @@ class App extends React.Component{
 
     render(){
         return(
-            <div >
-                <h1 style={{textAlign: 'center'}}>
-                    Welcome to Mirror Size!
-                </h1>
-                Checkout what would be your best fit!
+            
+            <Routes >
+
                 {/* <Camera/> */}
-                <WebcamCapture/>
+                {/* <WebcamCapture/> */}
+                <Route path = "/MirrorSize" element = {<Landing/>}/>
+                <Route path = "/MirrorSize/demo" element = {<WebcamCapture/>}/>
                 
-            </div>
+                
+            </Routes>
 
         )
     }
