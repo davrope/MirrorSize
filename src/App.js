@@ -1,7 +1,7 @@
 import React from 'react';
-import Camera from './pose-detection/Camera';
+// import Camera from './pose-detection/Camera';
 import './App.css';
-import Webcam from 'react-webcam';
+// import Webcam from 'react-webcam';
 import WebcamCapture from './pose-detection/WebcamExample'; 
 
 

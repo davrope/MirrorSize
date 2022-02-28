@@ -28,6 +28,8 @@ const WebcamCapture = ()=>{
     useEffect(
         ()=>{
             myDetector(myImage);
+            
+
         },[photo]
     )
 
@@ -68,7 +70,7 @@ const WebcamCapture = ()=>{
     
     const detect = async(detector, image)=>{
 
-        if(typeof (photo) !==""){
+        if( photo !==null){
 
             const estimationConfig = {flipHorizontal:true}
             const timestamp = performance.now();
@@ -94,27 +96,27 @@ const WebcamCapture = ()=>{
     const webcamRef = React.useRef(null)
 
     const handleClick =()=>{
-        setTimer(3);
+        setTimer(10);
 
         setTimeout(()=>{
             capture();
-        }, 3000)
+        }, 10000)
     }
     
     const capture = React.useCallback(
         ()=>{
             const imageSrc = webcamRef.current.getScreenshot();
             
-            setPhoto(imageSrc);
+            
             
             const image = document.createElement("img");
             image.src = imageSrc
             image.width = 640
             image.height = 480
             
-
+            
             setMyImage(image);  
-    
+            setPhoto(imageSrc);
         },
         [webcamRef]
     );
@@ -139,14 +141,14 @@ const WebcamCapture = ()=>{
             <div className="webcam-container">
                 <div className="webcam-img">
 
-                    {photo == ''? <Webcam
+                    {photo === ''? <Webcam
                         audio = {false}
                         height= {480}
                         ref = {webcamRef}
                         screenshotFormat= "image/jpeg"
                         width={640}
                         videoConstraints= {videoConstraints}
-                        />: <img src = {photo} id ={photo} />
+                        />: <img src = {photo} id ={photo} alt = 'loading'/>
                     }
                     <canvas
                         ref = {canvasRef}
