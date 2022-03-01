@@ -96,15 +96,22 @@ const WebcamCapture = ()=>{
     const webcamRef = React.useRef(null)
 
     const handleClick =()=>{
+        if (photo != null){
+            setPhoto('');
+            clearCanvas(canvasRef)
+        }
         setTimer(10);
 
-        setTimeout(()=>{
+        setTimeout(()=>{            
             capture();
         }, 10000)
     }
     
     const capture = React.useCallback(
+        
         ()=>{
+            
+            
             const imageSrc = webcamRef.current.getScreenshot();
             
             
@@ -132,6 +139,13 @@ const WebcamCapture = ()=>{
 
 
 
+    }
+
+    const clearCanvas = (canvas)=>{
+
+        const ctx =  canvas.current.getContext("2d");
+        
+        ctx.clearRect(0, 0, canvas.current.width, canvas.current.height);
     }
 
 
