@@ -96,8 +96,10 @@ const WebcamCapture = ()=>{
     const webcamRef = React.useRef(null)
 
     const handleClick =()=>{
+
         if (photo != null){
             setPhoto('');
+            setMyImage(null)
             clearCanvas(canvasRef)
         }
         setTimer(10);
@@ -144,6 +146,7 @@ const WebcamCapture = ()=>{
     const clearCanvas = (canvas)=>{
 
         const ctx =  canvas.current.getContext("2d");
+        console.log(canvas)
         
         ctx.clearRect(0, 0, canvas.current.width, canvas.current.height);
     }
