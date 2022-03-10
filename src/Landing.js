@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import pictogram from '../src/imgs/pictogram.jpg';
+import clothes from '../src/imgs/clothes.jpg';
 
 const Landing = () => {
   return (
@@ -8,7 +10,7 @@ const Landing = () => {
             Welcome to Mirror Size!
         </h1>
         <section className='hero'>
-            <img src = "https://i.postimg.cc/k5qHRc5H/video.png" alt = "Testing img" className='hero-img' />
+            <img src = {clothes} alt = "Clothes photo by Priscilla Du Preez on Unsplash" className='hero-img' />
             <div className='hero-txt'>
                 <h2 className='info-title'>
                     Check out what would be your best size
@@ -29,10 +31,10 @@ const Landing = () => {
             <ul className='info-subtitle'>
                 <li>Write your height in cm</li>
                 <li>Click the capture button</li>
-                <li>You'll have 10 seconds to pose like this</li>
+                <li>You'll have 10 seconds to pose like this (make sure you show your hands and hips) </li>
                 <li>That's it! you'll probably have to wait a few seconds to visualize your size</li>
             </ul>
-            <img src = "https://i.postimg.cc/k5qHRc5H/video.png" alt = "Testing img" className='tutorial-img' />
+            <img src = {pictogram} alt = "Testing img" className='tutorial-img'/>
 
         </section>
         <button className='go-button'>

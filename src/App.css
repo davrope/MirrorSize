@@ -56,6 +56,9 @@ body {
     margin-bottom: 30px;
 }
 
+.tutorial-img{
+  max-width: 80%;
+}
 .go-button{
   border: none;
   border-radius: 24px;
@@ -66,3 +69,4 @@ body {
   cursor:pointer;
   margin-top: 20px;
 }
+
