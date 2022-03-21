@@ -154,6 +154,7 @@ const WebcamCapture = ()=>{
 
     return(
         <div>
+            <h2>Say cheese! :)</h2>
             <h3 style={{fontSize:32}}>{timer}</h3>
             <div className="webcam-container">
                 <div className="webcam-img">
