@@ -15,9 +15,7 @@ export default function comparingDistance(poses, height){
     
     let results_arr = iterateSize(half_span_arr, poses); //using just 1 arm
     let tshirt_results_array = iterateSize(t_shirt_array, poses);
-    // console.log("tshirt2: "+tshirt_results_array.length)
-    // console.log("results3: "+results_arr.length)
-    // console.log("Comparing height:"+height)
+
 
 
     if(results_arr.length ===3 && tshirt_results_array.length===2){ 

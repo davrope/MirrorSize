@@ -19,13 +19,6 @@ export default function Size(poses, pointIndex, adjacentPointIndex) {
 
     const adjacentPoint = [keypoints[adjacentPointIndex]["y"], keypoints[adjacentPointIndex]["x"]]
 
-
-    // Score avg:
-    // const score = keypoints[pointIndex]["score"]
-    // const adjacentScore = keypoints[adjacentPointIndex]["score"]
-    // const score_avg = (score+adjacentScore)/2
-    // console.log(score_avg)
-    
     const substraction = substract(point, adjacentPoint)
     
     const myX = substraction[1];
