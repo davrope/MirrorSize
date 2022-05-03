@@ -1,5 +1,0 @@
-Make the comparing distance function to return a value of beyond XL.
-A handle error when the response of distance is different than a string (that needs to pass to setsize in webcam example)
-*Give a better design to the interface
-*Compute a reference error factor
-*Write the README file
